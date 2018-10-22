@@ -10,7 +10,7 @@ steps:
   - image
   - deployment
   - hello-web
-  - web=gcr.io/thor-218109/hello-app:1.0.$BUILD_ID
+  - hello-app=gcr.io/thor-218109/hello-app:1.0.$BUILD_ID
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=hello-web-cluster'
