@@ -1,7 +1,4 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args: ['gcloud', 'container', 'clusters', 'get-credentials', 'hello-web-cluster', '--zone=us-central1-a']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/thor-218109/hello-app:1.0.$REVISION_ID', '.']
   timeout: 180s
