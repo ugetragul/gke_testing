@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/thor-218109/hello-app:v1', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/thor-218109/hello-app:v1']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/hello-app:v1', 'my-container=gcr.io/thor-218109/hello-app:v1']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=hello-world-cluster'
+options:
+    machineType: 'n1-standard-1'
+timeout: 660s
+images: ['gcr.io/thor-218109/hello-app:v1']
